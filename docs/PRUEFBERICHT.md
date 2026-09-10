@@ -1,6 +1,23 @@
 # Prüfbericht
 
-## Stand der lokalen Abnahme
+## Abnahme der Lernkapitel-Erweiterung
+
+Die vollständige lokale Abnahme mit `PLAYWRIGHT_HOST_PLATFORM_OVERRIDE=ubuntu24.04-x64 npm run verify` wurde durchgeführt. Ergebnis: **12 Node-Testgruppen bestanden**, keine Fehler; bisherige 14.400 Generatorfälle unverändert grün.
+
+- **9 eigenständige Kapitel, 72 einzeln erklärte Methoden und vollständig gerechnete Beispiele**, **10 interaktive SVG**, **27 Selbstchecks**. Die Kapiteltexte einschließlich der ausgearbeiteten Beispiele umfassen **9.502 Wörter** ohne Bildtexte, Aufgabenprompts und Navigation; je Kapitel 1.017–1.105. Der Regressionstest verlangt mindestens 900 Wörter je Kapitel, ersetzt aber nicht die inhaltliche Prüfung.
+- Die tatsächlichen bestehenden Themen und Typen wurden vor der Redaktion gelesen. `src/catalog.js`, `src/answer.js` und `src/progress.js` sind gegenüber dem vorherigen Stand unverändert. Kein neues Speicherformat und keine stillschweigende Curriculum-Erweiterung.
+- **72 unabhängige Beispiel-Sollwerte** rechnerisch gegen die echten Aufgabentypen und deren Einsetz-/Umkehrinvarianten geprüft; zusätzliche Zwischenschritte, Vorzeichenfälle und falsche Antworten geprüft. Die sichtbaren Rechenwege wurden redaktionell ausgearbeitet, nicht nur aus Kurzregeln wiederholt.
+- **429 interne Referenzen** geprüft: exakte Fragmente, Übungs-IDs, Nachbarkapitel und Assets unter einem Projekt-Unterpfad. `coverage.json` wird zusätzlich im realen Browser eingelesen und exakt mit dem Typkatalog verglichen.
+- Mathematische SVG-Modelle über alle erlaubten Reglerwerte geprüft, inklusive unabhängiger Zahlenproben und Ablehnung ungültiger Reglerwerte. Die Bildbeschreibung wird aus denselben Größen wie die Geometrie erstellt; zusätzlich ist sie als normal lesbarer Text sichtbar.
+- Browser: **72 tatsächlich geklickte Hin-/Rückwege** Kapitel → passender Übungstyp → exakte Erklärungssektion; Erklärung zählt als Hilfe und bleibt im Test verborgen. Alle **10 Regler** per Werteänderung und Tastatur geprüft, alle **27 Selbstchecks** geöffnet und geschlossen.
+- Alle neun Kapitel bei **1440, 768, 390 und 360 px** ohne horizontalen Dokumentüberlauf. **18 axe-Scans** (jedes Kapitel Desktop und Mobil) ohne gefundene Verstöße in WCAG 2 A/AA und 2.1 AA. Keine Zertifizierung, kein manueller Screenreader-Test.
+- Alle Kapitel ohne JavaScript lesbar, einschließlich Beispiele, Abbildungen und nativer Selbstcheck-Aufklapper. Lesen verändert bestehenden Legacy-Speicher nicht; die Kapitel funktionieren auch mit gesperrtem Storage.
+- Desktop-/Mobilbilder sämtlicher Kapitelabbildungen sowie der Leseoberfläche wurden erstellt und visuell geprüft. Mobile SVG-Beschriftung wurde vergrößert; vollständige Textalternativen bleiben auch bei kleinen Bildern lesbar. Die Bilder liegen lokal bzw. als CI-Artefakt unter `artifacts/`.
+- Vollständige bisherige Übungsabnahme bleibt grün: 72 Typen, 27 Thema/Anspruch-Kombinationen, Fehlerkartei, Testende, Export, Löschen, Persistenz und Speicherfehler.
+
+**Release-Nachweis:** Der endgültige Commit und der erfolgreiche Pages-Lauf werden im Übergabebericht genannt. `npm run verify:live` vergleicht nach dem Deployment **sämtliche** Dateien des aktuellen `dist/` bytegenau mit den öffentlichen URLs und schreibt `artifacts/live-artifacts.json`. Anschließend wird dieselbe vollständige Browserprüfung mit `BASE_URL=https://rwiermerstudio.github.io/mathe-9-berlin/` ausgeführt; deren maschinenlesbarer Kapitelbericht ist `artifacts/lesson-browser-report.json`. Ein grüner lokaler Lauf allein wird nicht als Deploymentnachweis ausgegeben.
+
+## Stand der lokalen Erstabnahme (historisch)
 
 Recherche und Prüfung: 10. September 2026. Laufzeit: Node.js 22; Chromium über Playwright. Die tatsächliche Veröffentlichung wird zusätzlich durch den grünen Pages-Workflow und einen Browserdurchlauf mit `BASE_URL` überprüft; maßgeblich sind die zugehörigen Actions-Läufe und der im Übergabebericht genannte Commit.
 

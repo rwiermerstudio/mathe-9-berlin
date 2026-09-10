@@ -1,8 +1,8 @@
 # Mathe 9 Berlin
 
-**[Direkt üben](https://rwiermerstudio.github.io/mathe-9-berlin/)** · [Curriculum und Quellen](https://rwiermerstudio.github.io/mathe-9-berlin/curriculum.html)
+**[Lernkapitel lesen](https://rwiermerstudio.github.io/mathe-9-berlin/lernen.html)** · **[Direkt üben](https://rwiermerstudio.github.io/mathe-9-berlin/)** · [Curriculum und Quellen](https://rwiermerstudio.github.io/mathe-9-berlin/curriculum.html)
 
-Ein statischer Übungstrainer für Klasse 9 am Gymnasium Berlin: **72 parametrische Aufgabentypen in neun Themen**, kurze Erklärungen, gestufte Hinweise, konkrete Rechenwege und differenzierte Antwortprüfung. Keine Anmeldung, keine externe Laufzeitbibliothek, kein Backend und keine Tracker.
+Ein statischer Lern- und Übungstrainer für Klasse 9 am Gymnasium Berlin: **neun ausführliche eigenständige Lernkapitel und 72 parametrische Aufgabentypen**, gestufte Hinweise, konkrete Rechenwege und differenzierte Antwortprüfung. Keine Anmeldung, keine externe Laufzeitbibliothek, kein Backend und keine Tracker.
 
 ## Lernen
 
@@ -13,6 +13,14 @@ Ein statischer Übungstrainer für Klasse 9 am Gymnasium Berlin: **72 parametris
 - Mathematisch berechnete SVG-Graphen, maßstäbliche Dreiecke und ein Diagramm zur Achsenmanipulation; jeweils Textalternativen.
 - Fortschritt im Browser, JSON-Export und bestätigtes Löschen. Keine Synchronisation, kein Import, kein Fortsetzen laufender Tests nach Neuladen.
 - Tastaturbedienung, sichtbarer Fokus, semantische Formulare und Live-Rückmeldung; mobile Darstellung.
+
+## Ausführlich verstehen
+
+Jedes der neun Kapitel enthält Motivation, aufgefrischtes Vorwissen, Begriffe, begründete Herleitungen, acht vollständig gerechnete Beispiele mit Probe, häufige Fehler, drei Selbstchecks und eine Zusammenfassung. Rund 1.000 Wörter pro Kapitel (ohne Navigation und Bildtexte), keine bloße Verlängerung der Kurzregel. Die [Abdeckungstabelle](docs/KAPITELABDECKUNG.md) ordnet **alle 72 Typen einzeln** einer Erklärung zu; [coverage.json](https://rwiermerstudio.github.io/mathe-9-berlin/coverage.json) stellt dieselbe Zuordnung maschinenlesbar bereit.
+
+Zehn interaktive, berechnete SVG erklären Wurzelintervalle, binomische Flächen, Geradensteigung, Parabelsymmetrie, Dreiecksverhältnisse, Kegelschnitte, diskretes Wachstum, Sinusperioden, Urnenbäume und Achsenverkürzung. Jede hat eine inhaltliche Anleitung, beschriftete Tastaturregler und eine mit den Zahlen aktualisierte vollständige Textalternative. Eigene SVG, keine extern geladenen Medien.
+
+Die Kapitel sind statisch unter `lernen/<thema>.html`, auch ohne JavaScript lesbar. Inhaltsnavigation und Vor-/Weiterlinks unterstützen schrittweises Lesen. Jede Methode hat einen Link in genau ihren Übungstyp (`index.html?type=<id>`). Die Übungsseite führt im neuen Tab zum zugehörigen Beispiel zurück; Öffnen zählt als Hilfe, im Test ist der Link verborgen. Lesen und die 27 kurzen Denkfragen erzeugen keine neuen Speicherdaten; der vorhandene Schlüssel und das Fortschrittsformat bleiben unverändert. Die Übungsseite lädt keine Lehrtextmodule.
 
 ## Berliner Rahmenlehrplan statt bundesweiter Themenliste
 
@@ -39,6 +47,7 @@ Einzeln:
 npm test                 # Parser, Generator, Fortschritt, Struktur, SVG
 npm run build            # dist/ und generierte Aufgabentabelle
 npm run test:browser     # Chromium: alle 72 Typen, Lernfunktionen, axe
+npm run verify:live      # Alle Dateien in dist/ bytegenau gegen GitHub Pages
 BASE_URL=https://rwiermerstudio.github.io/mathe-9-berlin/ npm run test:browser
 ```
 
@@ -57,6 +66,11 @@ In GitHub Actions auf `ubuntu-latest` wird regulär installiert. Der Pages-Deplo
 - `src/answer.js`: streng formatierter Zahlen-/Bruchparser und Mengenvergleich. Standardtoleranz `max(1e-12, |Sollwert|·1e-9)`; bei Rundungsaufgaben eine halbe Einheit der letzten Nachkommastelle. Keine symbolische Algebra. Für periodische Ergebnisse exakte Brüche bevorzugen.
 - `src/progress.js`: versionierter und validierter lokaler Zustand; höchstens 200 Fehleraufgaben und 20 Testresultate.
 - `src/app.js`, `src/visual.js`: Lernablauf, barrierearme Bedienelemente und SVG aus tatsächlichen Parametern.
+- `src/chapters.js`, `src/lesson-examples.js`: eigenständige Lehrtexte und 72 eigens ausgearbeitete, an echte Typen gebundene Beispiele.
+- `src/lesson-figures.js`, `src/lesson-reader.js`, `lessons.css`: mathematische Abbildungsmodelle, progressive Regler und responsive Leseoberfläche.
+- `scripts/render-lessons.js`: escaped statische Kapitel aus Katalog und Lehrdaten; `scripts/build.js` erstellt auch die Abdeckungsdateien. Kein kompletter Lehrtextdownload beim Üben.
+- `tests/lessons*.js`, `tests/lesson-structure.test.js`: Inhalts-/Typverträge, unabhängige Beispiel-Sollwerte, Reglerinvarianten, Links, 72 echte Hin-/Rückklicks, 27 Selbstchecks, 18 Kapitel-axe-Prüfungen bei 1440/360 px und Layout bei 1440/768/390/360 px. Ohne-JS- und Legacy-Speicher-Proben ergänzen die bestehende Suite.
+- `scripts/verify-live.js`: abweichende oder fehlende Live-Dateien führen zum Fehler; JSON-Nachweis mit SHA-256 unter `artifacts/live-artifacts.json`.
 - `tests/`: 200 feste Seeds je Typ, unabhängige Einsetz-/Umkehr-/Zähleigenschaften und Gegenproben mit verfälschten Antworten; Browserprüfung.
 - `scripts/build.js`: kopiert nur die benötigten statischen Dateien in `dist/`. Keine Geheimnisse/Tests/Node-Abhängigkeiten im Pages-Artefakt.
 

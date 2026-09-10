@@ -1,4 +1,5 @@
 import AxeBuilder from '@axe-core/playwright';
+import {testLessons} from './lessons-browser.js';
 import {chromium} from '@playwright/test';
 import assert from 'node:assert/strict';import {createServer} from 'node:http';import {readFile,mkdir} from 'node:fs/promises';import {extname,resolve} from 'node:path';
 import {types,topics,generate} from '../src/catalog.js';import {answerText} from '../src/answer.js';
@@ -47,4 +48,5 @@ try{
  const broken=await browser.newPage();await broken.addInitScript(()=>{localStorage.setItem('mathe9berlin.v1','{broken');});await broken.goto(base);await broken.locator('#prompt').waitFor();assert.equal(await broken.locator('#attempted').textContent(),'0');await broken.close();
  const blocked=await browser.newPage();await blocked.addInitScript(()=>{Object.defineProperty(Storage.prototype,'setItem',{value(){throw Error('gesperrt');}});});await blocked.goto(base);await blocked.locator('#prompt').waitFor();await blocked.fill('#answer','123');await blocked.click('#check');assert.match(await blocked.locator('#storage-status').textContent(),/nicht gespeichert/);await blocked.close();
  assert.deepEqual(errors,[]);console.log(`BROWSER PASS: ${types.length} Typen / ${topics.length} Themen; Fehlerkartei, 10er-Test, Persistenz, Export, Löschen, Speicherfehler, 3 Mobilbreiten, Tastatur, keine Konsolenfehler. Ziel: ${base}`);
+ await testLessons(browser,base);
 }finally{await browser.close();if(server)server.close();}
