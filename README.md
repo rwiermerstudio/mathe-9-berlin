@@ -4,6 +4,10 @@
 
 Ein statischer Lern- und Übungstrainer für Klasse 9 am Gymnasium Berlin: **neun ausführliche eigenständige Lernkapitel und 72 parametrische Aufgabentypen**, gestufte Hinweise, konkrete Rechenwege und differenzierte Antwortprüfung. Keine Anmeldung, keine externe Laufzeitbibliothek, kein Backend und keine Tracker.
 
+## Gestaltung
+
+Die neue Oberfläche verbindet kräftige serifenlose Überschriften, eine geometrische Formenstudie und flächige Kapiteltafeln mit einem ruhigen Lesebereich. Dunkles Violett, helles Gelbgrün, Koralle und nahezu schwarze Schrift ersetzen das frühere grüne Kartenlayout. Inspiration: [Pentagram – neue Guggenheim-Identität](https://www.pentagram.com/work/guggenheim-3); konkrete Beobachtungen, eigene Ableitungen, Farbwerte und Prüfungen stehen in [DESIGN.md](docs/DESIGN.md). Keine Verbindung zu oder Beauftragung durch Guggenheim/Pentagram; keine übernommenen Logos, Kunstwerke oder Markenfonts. Systemschriften, CSS-Formen und eigene SVG benötigen keinerlei externe Laufzeitabrufe.
+
 ## Lernen
 
 - Thema, Anspruch und konkreten Aufgabentyp wählen; beliebig viele neue Zahlenvarianten.

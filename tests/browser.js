@@ -1,5 +1,6 @@
 import AxeBuilder from '@axe-core/playwright';
 import {testLessons} from './lessons-browser.js';
+import {testDesign} from './design-browser.js';
 import {chromium} from '@playwright/test';
 import assert from 'node:assert/strict';import {createServer} from 'node:http';import {readFile,mkdir} from 'node:fs/promises';import {extname,resolve} from 'node:path';
 import {types,topics,generate} from '../src/catalog.js';import {answerText} from '../src/answer.js';
@@ -18,6 +19,7 @@ try{
  }
  await page.selectOption('#topic','zahlen');await page.selectOption('#type','bruch-summe');
  await page.fill('#answer','987654321');await page.click('#check');assert.match(await page.locator('#feedback').textContent(),/Noch nicht/);
+ await mkdir('artifacts/design',{recursive:true});await page.locator('#exercise').screenshot({path:'artifacts/design/feedback-wrong.png'});
  await page.click('#hint');assert.ok(await page.locator('#steps li').count());await page.click('#solution');assert.match(await page.locator('#steps').textContent(),/Ergebnis/);
  const attempts=await page.locator('#attempted').textContent();await page.reload();assert.equal(await page.locator('#attempted').textContent(),attempts);
  await page.click('#review');assert.match(await page.locator('#mode-label').textContent(),/Fehler/);
@@ -29,6 +31,7 @@ try{
   await page.fill('#answer',answerText(generate(id,seed)));await page.click('#check');await page.click('#next');
  }
  assert.match(await page.locator('#summary').textContent(),/10 von 10/);
+ await mkdir('artifacts/design',{recursive:true});await page.locator('#summary').screenshot({path:'artifacts/design/test-summary.png'});
  await page.click('#review');assert.equal(await page.locator('#feedback').isVisible(),true);assert.match(await page.locator('#feedback').textContent(),/Fehlerkartei ist leer/);
  await page.click('#train');
  for(const topic of topics)for(const level of ['1','2','3']){await page.selectOption('#topic',topic.id);await page.selectOption('#level',level);const id=await page.locator('#exercise').getAttribute('data-type');assert.equal(types.find(t=>t.id===id).level,Number(level));}
@@ -49,4 +52,5 @@ try{
  const blocked=await browser.newPage();await blocked.addInitScript(()=>{Object.defineProperty(Storage.prototype,'setItem',{value(){throw Error('gesperrt');}});});await blocked.goto(base);await blocked.locator('#prompt').waitFor();await blocked.fill('#answer','123');await blocked.click('#check');assert.match(await blocked.locator('#storage-status').textContent(),/nicht gespeichert/);await blocked.close();
  assert.deepEqual(errors,[]);console.log(`BROWSER PASS: ${types.length} Typen / ${topics.length} Themen; Fehlerkartei, 10er-Test, Persistenz, Export, Löschen, Speicherfehler, 3 Mobilbreiten, Tastatur, keine Konsolenfehler. Ziel: ${base}`);
  await testLessons(browser,base);
+ await testDesign(browser,base);
 }finally{await browser.close();if(server)server.close();}
