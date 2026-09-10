@@ -38,6 +38,16 @@ Primär ein Lernarbeitsplatz mit Themenfilter und einer zentralen Aufgabe, keine
 - Der Test musste den eingeklappten Fortschrittsbereich tatsächlich öffnen, bevor er Export/Löschen bedient.
 - Lokales Ubuntu 26.04 wurde von der festgelegten Playwright-Version nicht direkt unterstützt; der Ubuntu-24.04-Browserdownload funktioniert, ohne Änderungen an Hermes-Konfiguration.
 
+## Verifizierte Erstveröffentlichung
+
+- Öffentliches Repository: https://github.com/rwiermerstudio/mathe-9-berlin
+- Live-App: https://rwiermerstudio.github.io/mathe-9-berlin/
+- Erstveröffentlichungs-Commit: `99fe7dcc3b3e82b46178065efbfea2a163175f8e`.
+- Erfolgreicher Test- und Pages-Lauf: https://github.com/rwiermerstudio/mathe-9-berlin/actions/runs/34452928510
+- Anschließend **derselbe Browser-Lerndurchlauf über alle 72 Typen direkt auf der öffentlichen URL bestanden**. Alle neun ausgelieferten HTML/CSS/JS/SVG-Dateien bytegenau mit dem lokalen Build verglichen.
+- `rwiermer` per GitHub-API mit `permission=admin`, `role_name=admin` zurückgelesen. Repository-Sichtbarkeit PUBLIC, Pages-Buildtyp workflow, HTTPS erzwungen.
+- Der erste CI-Lauf meldete eine Node-20-Abkündigung für den separaten Screenshot-Artefaktupload. Deshalb auf die anhand der GitHub-Releases ermittelte aktuelle Hauptversion `actions/upload-artifact@v7` angehoben. Der nachfolgende Workflow wird vor Übergabe erneut überwacht; App-Dateien bleiben dabei unverändert.
+
 ## Grenzen der Prüfung
 
 Chromium, kein echter Safari-/Firefox-Lauf und kein manueller Screenreader-Test. Die Graphen sind nicht als interaktive Zeichenwerkzeuge gedacht. Keine fachliche Unterrichtserprobung. Kein Anspruch auf vollständige Abdeckung des Rahmenlehrplans oder automatische Bewertung offener Begründungen. `actionlint` war lokal nicht installiert; YAML wurde beim Schreiben geprüft und der reale GitHub-Workflow dient als zusätzliche Integrationsprüfung. Externe amtliche PDF-Quelle wurde erfolgreich heruntergeladen und ihr Text für die Curriculum-Zuordnung ausgelesen.
