@@ -1,6 +1,6 @@
 # Kapitel- und Methodenabdeckung
 
-Aus dem echten Aufgabenkatalog generiert; jeder Typ besitzt eine eigene Untersektion mit Begründung, vollständig gerechneter Zahlenvariante und Probe. Kein Typ wird durch eine bloße Sammelüberschrift abgedeckt. Alle Kapitel enthalten Vorwissen, Begriffe, Herleitungen, Fehlerhinweise, drei Denkfragen und Zusammenfassung.
+Aus dem echten Aufgabenkatalog generiert; jeder Typ besitzt eine eigene Untersektion mit Begründung, vollständig gerechneter Zahlenvariante und Probe. Kein Typ wird durch eine bloße Sammelüberschrift abgedeckt. Alle Kapitel enthalten einen ausdrücklich fiktiven Schulhofprojekttag als roten Faden: Einstieg mit Vorhersage, Vorwissen, Begriffe, vier kontextbezogene Herleitungen, eine Planungspause, acht Beispiel-Einordnungen, Fehlerhinweise, drei weitere Denkfragen und eine begründete Zusammenfassung mit Übergang. Der fachliche Erklärungskern wurde neu formuliert, nicht nur um Einleitungen ergänzt.
 
 ## Abbildungen
 
@@ -14,6 +14,14 @@ Aus dem echten Aufgabenkatalog generiert; jeder Typ besitzt eine eigene Untersek
 - **wachstum / sinus:** Mehr Schwingungen im selben Winkelbereich. Verdopple b. Wird die Kurve höher oder wiederholt sie sich öfter? Gezeigt wird y = 3 sin(bx) von 0° bis 360°. Die erste volle Periode ist mit einer Strecke unter der Kurve markiert; Winkel sind durchgehend im Gradmaß.
 - **zufall / baum:** Zwei Züge mit und ohne Zurücklegen. Ausgangspunkt sind 3 rote und 4 blaue Kugeln. Vermute vor dem Umschalten, ob RR häufiger wird. R bedeutet rot, B blau; die Buchstaben, nicht nur Farben, unterscheiden die Zweige. Alle vier vollständigen Pfade stehen zusätzlich im Text.
 - **daten / balken:** Gleiche Daten, andere sichtbare Verhältnisse. Die Daten bleiben 23 und 27. Setze die Achse erst auf 0, dann auf 20. Lies jeweils das sichtbare Verhältnis und das unveränderte Datenverhältnis. Der untere Achsenwert ist ausdrücklich angeschrieben; ein verkürzter Beginn wird zusätzlich als Warnung benannt.
+
+## Zusätzliche Vergleichsbilder
+
+- **gleichungen / gleichungen-prozess:** Eine Bilanz vorwärts und rückwärts. Die zweimal auftauchende −2 hat unterschiedliche Rollen: links die einzelne Korrektur, rechts die gesamte Bilanz. Rückwärts wird zuerst die letzte Operation aufgehoben. Beide Seiten einer Gleichung müssen dieselbe Umformung erfahren.
+- **linear / linear-prozess:** Grundgebühr und Zeitanteil getrennt halten. Jede Zeile zerlegt die Gesamtkosten in einen festen und einen zeitabhängigen Teil. Von drei auf sechs Stunden kommen 6 Euro hinzu. Die gleichbleibende Grundgebühr verhindert eine Verdopplung des Gesamtpreises.
+- **wachstum / wachstum-prozess:** Gleicher Anfang, anderer zweiter Schritt. Im ersten Schritt ist der Unterschied unsichtbar. Im zweiten beträgt der prozentuale Zuwachs 12,48, weil er sich auf 312 bezieht. Ein gleiches Wertepaar reicht deshalb nicht aus, um lineares und exponentielles Wachstum zu unterscheiden.
+
+Alle Vergleichsbilder bestehen aus semantischen HTML-Rechenketten mit Anleitung und Bildunterschrift. Sie bleiben ohne JavaScript und ohne Farberkennung lesbar.
 
 ## Exakte Übungszuordnung
 

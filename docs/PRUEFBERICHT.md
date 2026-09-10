@@ -1,6 +1,20 @@
 # Prüfbericht
 
-## Abnahme der Lernkapitel-Erweiterung
+## Abnahme der narrativen Überarbeitung
+
+`PLAYWRIGHT_HOST_PLATFORM_OVERRIDE=ubuntu24.04-x64 npm run verify` bestanden: **15 Node-Testgruppen**, **14.400 Generatorfälle**, **446 interne Referenzen**, Build und vollständige Browser-/Designsuite. Die neuen Integrationstests wurden zuerst mit fehlendem Kapitelexport bzw. fehlender narrativer Buildabdeckung scheitern gesehen und nach der Integration erneut bestanden.
+
+- Alle **36 fachlichen Erklärabsätze** neu formuliert und mit je einer kontextbezogenen Denkfrage verbunden. **Neun eigenständige Kapitel** führen den ausdrücklich fiktiven Schulhofprojekttag vom Materialbedarf bis zum Abschlussbericht fort. Voraussetzungen bleiben pro Kapitel vorhanden.
+- **72 Beispiel-Einordnungen** werden innerhalb des jeweils richtigen Beispiels gerendert; IDs, Aufgabenparameter, Rechenbeispiele, Generator, Antwortprüfung und Speicherschema sind unverändert. Story und Transfer sind in den statischen Build integriert, keine verwaisten Dateien oder zusätzlichen Laufzeitmodule.
+- **Neun Projektchecks** zusätzlich zu den **27 bestehenden Denkfragen** rechnerisch und per Tastatur geprüft. Die Quellenwerte der drei neuen Vergleichsbilder werden unabhängig geprüft. Die Urnenwahrscheinlichkeit wird durch vollständiges Auszählen der Kugelpaare gegengeprüft.
+- **Drei neue HTML-Vergleichsbilder** ergänzen die **zehn unveränderten interaktiven SVG**. Jeweils Anleitung, semantische Rechenketten und Bildunterschrift; mobile Stapelung ohne Abhängigkeit von Farbe oder JavaScript.
+- Browser: **72 echte Hin-/Rückklicks**, zehn Regler, alle Kapitel bei vier Breiten, **18 Kapitel-axe-Scans**, zusätzlich Designprüfung auf **12 Seiten bei vier Breiten** und sechs weiteren axe-Scans; keine gefundenen Verstöße oder Konsolenfehler. Kein manueller Screenreader- oder Safari-Test.
+- Legacy-Speicher, gesperrter Speicher, Lesen ohne JavaScript und der vollständige bisherige Übungsablauf bleiben grün. Kapitelbilder, Vergleichsbilder bei Desktop/Mobil und Screenshots aller Erklärabschnitte liegen unter `artifacts/`. Manuell gesichtet: neue Kosten-/Wachstums-/Umkehrbilder, mobile Leseoberfläche, Zahlen-Erklärabschnitt und mobiles Urnenbild; keine festgestellte Überlagerung oder abgeschnittene Beschriftung in diesen Ansichten.
+- Inhaltliche Grenzen: keine unabhängige fachdidaktische Begutachtung oder Unterrichtserprobung, keine Bewertung freier Begründungen. Vergleichsmodelle sind keine echte Schulstatistik oder Bauanleitung. Bestehende Curriculumgrenzen unverändert.
+
+Der endgültige Commit und erfolgreiche CI-/Pages-Lauf werden im Übergabebericht angegeben. Nach Veröffentlichung sind weiterhin bytegenauer Livevergleich und vollständige Browsersuite gegen Pages erforderlich; lokales Grün allein ist kein Veröffentlichungsnachweis.
+
+## Abnahme der Lernkapitel-Erweiterung (historisch)
 
 Die vollständige lokale Abnahme mit `PLAYWRIGHT_HOST_PLATFORM_OVERRIDE=ubuntu24.04-x64 npm run verify` wurde durchgeführt. Ergebnis: **12 Node-Testgruppen bestanden**, keine Fehler; bisherige 14.400 Generatorfälle unverändert grün.
 

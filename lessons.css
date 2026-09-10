@@ -62,6 +62,18 @@
 .lesson-card p:last-child{font-size:13px;border-top:1px solid #b2b2a7;padding-top:14px;margin-top:auto;color:var(--muted)}
 .lesson-page code{overflow-wrap:anywhere;font-size:1em}
 .lesson-page .eyebrow{letter-spacing:.1em}
+.story-notice{font-size:15px;background:var(--lavender);padding:18px;border-left:4px solid var(--violet)}
+.reasoning-step{margin:32px 0}
+.story-transfer{border-left:4px solid var(--coral,#ee9279);padding:0 0 0 18px;margin:24px 0}
+.story-transfer h3{font-size:18px}
+#projektcheck{background:var(--lime);padding:24px}
+.process-figure{margin:20px 0;border:1px solid var(--line);background:white;padding:20px}
+.process-track h4{font-size:17px;margin:16px 0 12px;line-height:1.5}
+.process-track ol{list-style:none;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;padding:0!important}
+.process-track li{background:var(--lavender);border-top:3px solid var(--violet);padding:14px;font-size:17px;line-height:1.55;overflow-wrap:anywhere;margin:0}
+.process-track li:last-child{background:var(--lime)}
+.process-figure figcaption{border-top:1px solid var(--line);padding-top:18px;margin-top:24px;font-size:16px;line-height:1.65}
+@media(max-width:650px){.process-track ol{grid-template-columns:1fr;gap:8px}.process-track li{padding:12px 16px}.process-figure{padding:16px}.process-track li+li::before{content:'↓ ';font-weight:700}#projektcheck{padding:20px 16px}}
 .lesson-page main>p:not(.chapter-lead){max-width:88ch}
 @media(max-width:1000px){.reader-layout{gap:32px;grid-template-columns:220px minmax(0,1fr)}.lesson-card{padding:22px}.lesson-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:850px){.reader-layout{grid-template-columns:1fr;gap:32px}.chapter-nav{position:static;max-height:none}.chapter-nav ol{columns:2;column-gap:28px}.chapter-nav li{break-inside:avoid}.worked{padding:24px}.lesson-page header nav{margin-left:0}.lesson-figure{padding:8px}.lesson-figure svg text{font-size:24px}.chapter-hero{padding-right:100px}.chapter-hero::after{width:74px;height:74px;border-width:17px}.chapter-content{max-width:100%}}
